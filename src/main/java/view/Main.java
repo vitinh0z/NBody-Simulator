@@ -12,6 +12,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.Random;
+
 public class Main extends Application {
 
 
@@ -45,7 +47,7 @@ public class Main extends Application {
             @Override
             public void handle(long l) {
 
-                simulation.update(0.01);
+                simulation.update(0.1);
 
                 pincel.setFill(Color.BLACK);
                 pincel.fillRect(0,0, WIDTH, HEIGHT);
@@ -60,23 +62,40 @@ public class Main extends Application {
 
     public void criarCenarioInicial(){
 
-        Body sol = new Body(
-                100000000,
-                30,
-                new Vector(0,0),
-                new Vector(0,0)
+
+
+        Body buracoNegro = new Body (
+                5000,
+                6.0,
+                new Vector(0, 0),
+                new Vector(0, 0)
         );
 
-        Body terra = new Body(
-                1000,
-                10,
-                new Vector(300, 0),
-                new Vector(0, 577)
-            
-        );
+        simulation.addBody(buracoNegro);
 
-        simulation.addBody(sol);
-        simulation.addBody(terra);
+        Random random = new Random();
+
+        long numeroDeParticulas = 1500L;
+
+        for (int i = 0; i<numeroDeParticulas; i++){
+
+        double x = random.nextGaussian() * 120;
+        double y = random.nextGaussian() * 120;
+
+        double mass = 0.5 + random.nextDouble() * 2.0;
+
+        double raio = 0.9;
+
+        Vector posicao = new Vector(x, y);
+
+        Vector velocidade = new Vector(random.nextGaussian() * 0.5, random.nextGaussian() * 0.5);
+
+        Body body = new Body(mass, raio, posicao, velocidade);
+
+        simulation.addBody(body);
+
+        }
+
 
     }
 
@@ -84,6 +103,9 @@ public class Main extends Application {
     private void desenharCorpos(GraphicsContext pincel) {
         double centroX = WIDTH / 2.0;
         double centroY = HEIGHT / 2.0;
+
+
+
 
         for (Body body : simulation.getBodies()) {
 
@@ -94,13 +116,30 @@ public class Main extends Application {
             double xTela = centroX + xFisico;
             double yTela = centroY + yFisico;
 
-
             double raio = body.getRadius();
-            pincel.setFill(Color.WHITE); // Cor do planeta
+
+            if (body.getMass() <= 1.5){
+                pincel.setFill(Color.rgb(13, 10, 136));
+                continue;
+
+            }
+
+            else if (body.getMass() > 5000 ){
+                pincel.setFill(Color.BLACK);
+                pincel.fillOval(xTela - raio, yTela - raio, raio*2, raio*2);
 
 
+                pincel.setStroke(Color.ORANGE);
+                pincel.setLineWidth(2);
+                pincel.strokeOval(xTela - raio*2.5, yTela - raio*2.5, raio*5, raio*5);
+
+            }
+
+            pincel.setFill(Color.DARKVIOLET);
             pincel.fillOval(xTela - raio, yTela - raio, raio * 2, raio * 2);
         }
+
+        pincel.setGlobalAlpha(1.0);
     }
 
     public static void main(String[] args) {

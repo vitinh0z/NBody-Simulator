@@ -31,7 +31,6 @@ public class Simulation {
 
             for (int j = 0; j < bodies.size(); j++){
 
-
                 Body bodyB = bodies.get(j);
 
                 if (bodyA == bodyB) continue;
