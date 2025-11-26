@@ -70,8 +70,9 @@ public class Main extends Application {
         Body terra = new Body(
                 1000,
                 10,
-                new Vector(300,0),
-                new Vector(0, 12.9)
+                new Vector(300, 0),
+                new Vector(0, 577)
+            
         );
 
         simulation.addBody(sol);
