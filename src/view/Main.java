@@ -22,7 +22,7 @@ public class Main extends Application {
     Simulation simulation;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage)  {
 
         simulation = new Simulation();
         criarCenarioInicial();
@@ -35,9 +35,9 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, WIDTH, HEIGHT, Color.BLACK);
 
-        primaryStage.setTitle("Simulação Gravitacional");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Simulação Gravitacional");
+        stage.setScene(scene);
+        stage.show();
 
         new AnimationTimer(){
 
@@ -45,7 +45,7 @@ public class Main extends Application {
             @Override
             public void handle(long l) {
 
-                simulation.update(0.1);
+                simulation.update(0.01);
 
                 pincel.setFill(Color.BLACK);
                 pincel.fillRect(0,0, WIDTH, HEIGHT);
@@ -61,17 +61,17 @@ public class Main extends Application {
     public void criarCenarioInicial(){
 
         Body sol = new Body(
-                1_000_000,
+                100000000,
                 30,
                 new Vector(0,0),
                 new Vector(0,0)
         );
 
         Body terra = new Body(
-                100,
+                1000,
                 10,
                 new Vector(300,0),
-                new Vector(0, 15)
+                new Vector(0, 12.9)
         );
 
         simulation.addBody(sol);
@@ -80,5 +80,30 @@ public class Main extends Application {
     }
 
 
+    private void desenharCorpos(GraphicsContext pincel) {
+        double centroX = WIDTH / 2.0;
+        double centroY = HEIGHT / 2.0;
+
+        for (Body body : simulation.getBodies()) {
+
+            double xFisico = body.getPosition().getX();
+            double yFisico = body.getPosition().getY();
+
+
+            double xTela = centroX + xFisico;
+            double yTela = centroY + yFisico;
+
+
+            double raio = body.getRadius();
+            pincel.setFill(Color.WHITE); // Cor do planeta
+
+
+            pincel.fillOval(xTela - raio, yTela - raio, raio * 2, raio * 2);
+        }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 }

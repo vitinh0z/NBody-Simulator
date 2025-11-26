@@ -12,7 +12,7 @@ public class Body {
 
     private Vector aceleration;
 
-    public static final double G = 6.67430e-11;
+    public static final double G = 1.0;
 
     public Body(double mass, double radius, Vector position, Vector velocity) {
         this.mass = mass;
