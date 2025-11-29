@@ -120,11 +120,12 @@ public class Main extends Application {
 
             if (body.getMass() <= 1.5){
                 pincel.setFill(Color.rgb(13, 10, 136));
+                pincel.fillOval(xTela - raio, yTela - raio, raio*2, raio*2);
                 continue;
 
             }
 
-            else if (body.getMass() > 5000 ){
+            if (body.getMass() > 1000 ){
                 pincel.setFill(Color.BLACK);
                 pincel.fillOval(xTela - raio, yTela - raio, raio*2, raio*2);
 
@@ -132,7 +133,7 @@ public class Main extends Application {
                 pincel.setStroke(Color.ORANGE);
                 pincel.setLineWidth(2);
                 pincel.strokeOval(xTela - raio*2.5, yTela - raio*2.5, raio*5, raio*5);
-
+                continue;
             }
 
             pincel.setFill(Color.DARKVIOLET);
