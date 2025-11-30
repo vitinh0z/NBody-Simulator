@@ -757,7 +757,7 @@ Contribuições são muito bem-vindas!  🎉
 
 ### Links
 
-- [Three-body problem - Wikipedia](https://en.wikipedia. org/wiki/Three-body_problem)
+- [Three-body problem - Wikipedia](https://en.wikipedia.org/wiki/Three-body_problem)
 - [N-body simulation - Wikipedia](https://en.wikipedia.org/wiki/N-body_simulation)
 - [JavaFX Documentation](https://openjfx.io/)
 - [Newton's law of universal gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation)
@@ -792,11 +792,11 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ## 👤 Autor
 
-**Victor Hugo (vitinh0z)**
+**Victor Gabriel (vitinh0z)**
 
 - GitHub: [@vitinh0z](https://github.com/vitinh0z)
-- LinkedIn: [Adicione seu LinkedIn aqui]
-- Email: [Adicione seu email aqui]
+- LinkedIn: [vitinh0z](https://linkedIn.com/in/vitinh0z)
+- Email: [Email](victor10.vg23@gmail.com)
 
 ---
 
@@ -817,6 +817,5 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ---
 
 Feito por [vitinh0z](https://github.com/vitinh0z)
-[LinkdIn](
 
 </div>
